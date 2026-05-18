@@ -264,6 +264,22 @@ main {
   font-weight: 600;
 }
 
+/* GitHub as primary CTA — gradient border out of the gate, not just on hover */
+.store--gh {
+  border-color: transparent;
+  background:
+    linear-gradient(var(--bg-elev), var(--bg-elev)) padding-box,
+    var(--grad) border-box;
+}
+.store--gh:hover {
+  transform: translateY(-1px);
+  background:
+    linear-gradient(var(--bg-soft), var(--bg-soft)) padding-box,
+    var(--grad) border-box;
+}
+
+.store--contract { /* same shell as .store, just semantic */ }
+
 .cta {
   display: inline-flex;
   align-items: center;
@@ -528,6 +544,29 @@ main {
   color: var(--fg-dim);
   line-height: 1.65;
   font-size: 0.97rem;
+}
+
+/* ---- Integration section --------------------------------------------- */
+
+.section--integration {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(80, 200, 220, 0.05), transparent 60%);
+}
+.section--integration .snippet {
+  margin-top: 0;
+}
+
+.integration__note {
+  max-width: 720px;
+  margin: 36px auto 0;
+  text-align: center;
+  color: var(--fg-dim);
+  font-size: 0.97rem;
+  line-height: 1.65;
+}
+.integration__note em {
+  color: var(--fg);
+  font-style: italic;
 }
 
 /* ---- Protocols section ------------------------------------------------ */
