@@ -127,21 +127,25 @@ claimed[id] = <span class="hl-kw">true</span>;</code></pre>
       <h2>How it works</h2>
       <ol class="steps">
         <li>
+          <img class="step__visual" src="assets/step-01-address.svg" alt="" width="160" height="120" />
           <span class="step__num">01</span>
           <h3>Select an address</h3>
           <p>Open the Sigil app, connect a wallet, and pick the address you want to sigilize. The proof is bound to that address only.</p>
         </li>
         <li>
+          <img class="step__visual" src="assets/step-02-scan.svg" alt="" width="180" height="130" />
           <span class="step__num">02</span>
           <h3>Scan and tap</h3>
           <p>Scan the MRZ on your passport, then hold the passport to the phone. The app reads DG1 and the Security Object over NFC using ICAO 9303 BAC. Nothing leaves the phone.</p>
         </li>
         <li>
+          <img class="step__visual" src="assets/step-03-prove.svg" alt="" width="180" height="130" />
           <span class="step__num">03</span>
           <h3>Prove on-device</h3>
           <p>A Noir circuit checks the passport's signature chain and derives an opaque per-passport ID. The whole proof runs on the phone in about 5–15 seconds with Mopro.</p>
         </li>
         <li>
+          <img class="step__visual" src="assets/step-04-register.svg" alt="" width="180" height="130" />
           <span class="step__num">04</span>
           <h3>Register on-chain</h3>
           <p>Submit the proof to the registry. After that, any contract or backend can look up the address with one Solidity call: <code>isVerified(address)</code> for personhood, <code>nullifierOf(address)</code> for sybil dedup.</p>

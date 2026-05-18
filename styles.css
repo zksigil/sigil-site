@@ -323,12 +323,26 @@ main {
   background: var(--bg-elev);
   border: 1px solid var(--line-soft);
   border-radius: var(--radius);
-  padding: 24px 22px;
+  padding: 0 22px 24px;
   transition: border-color 200ms, transform 200ms;
+  overflow: hidden;
 }
 .steps li:hover {
   border-color: var(--line);
   transform: translateY(-2px);
+}
+.step__visual {
+  display: block;
+  margin: 0 -22px 18px;
+  width: calc(100% + 44px);
+  height: 120px;
+  object-fit: contain;
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(120, 200, 220, 0.06), transparent 70%),
+    var(--bg-soft);
+  border-bottom: 1px solid var(--line-soft);
+  padding: 14px 16px;
+  box-sizing: border-box;
 }
 .step__num {
   font-family: var(--font-mono);
