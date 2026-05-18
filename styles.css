@@ -231,21 +231,21 @@ main {
   align-items: center;
   gap: 12px;
   padding: 14px 22px;
-  background: var(--bg-elev);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  color: var(--fg);
-  font-weight: 500;
-  transition: transform 120ms ease, border-color 160ms ease, background 160ms ease;
-  position: relative;
-}
-.store:hover {
-  transform: translateY(-1px);
-  border-color: transparent;
   background:
     linear-gradient(var(--bg-elev), var(--bg-elev)) padding-box,
     var(--grad) border-box;
   border: 1px solid transparent;
+  border-radius: var(--radius);
+  color: var(--fg);
+  font-weight: 500;
+  transition: transform 120ms ease, background 160ms ease;
+  position: relative;
+}
+.store:hover {
+  transform: translateY(-1px);
+  background:
+    linear-gradient(var(--bg-soft), var(--bg-soft)) padding-box,
+    var(--grad) border-box;
 }
 .store__label {
   display: flex;
@@ -264,22 +264,6 @@ main {
   letter-spacing: -0.01em;
   font-weight: 600;
 }
-
-/* GitHub as primary CTA — gradient border out of the gate, not just on hover */
-.store--gh {
-  border-color: transparent;
-  background:
-    linear-gradient(var(--bg-elev), var(--bg-elev)) padding-box,
-    var(--grad) border-box;
-}
-.store--gh:hover {
-  transform: translateY(-1px);
-  background:
-    linear-gradient(var(--bg-soft), var(--bg-soft)) padding-box,
-    var(--grad) border-box;
-}
-
-.store--contract { /* same shell as .store, just semantic */ }
 
 .cta {
   display: inline-flex;
