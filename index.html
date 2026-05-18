@@ -116,9 +116,10 @@ claimed[id] = <span class="hl-kw">true</span>;</code></pre>
       </div>
 
       <p class="integration__note">
-        Sigil is public infrastructure, not a per-protocol service. You don't
-        integrate with it. You just read the contract. Any address sigilized for
-        one protocol is visible to every other protocol that reads the registry.
+        There's no SDK. Protocols just call the contract directly. Any sigilized
+        address is visible to anyone reading the registry. No passport data ever
+        touches the chain. The registry only records that an address has been
+        verified with a valid passport.
       </p>
     </section>
 
