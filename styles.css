@@ -476,45 +476,115 @@ main {
 }
 .onchain__col li:last-child { border-bottom: 0; }
 
-.tradeoff {
-  max-width: 720px;
+/* ---- Linkability card ------------------------------------------------- */
+
+.lnk {
+  max-width: 960px;
   margin: 56px auto 0;
-  padding: 28px 28px;
-  background: var(--bg-soft);
+}
+.lnk__card {
+  background: var(--bg-elev);
   border: 1px solid var(--line-soft);
   border-radius: var(--radius);
-  position: relative;
+  padding: 48px 40px;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 48px;
+  align-items: center;
 }
-.tradeoff::before {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: var(--radius);
-  padding: 1px;
-  background: var(--grad);
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-          mask-composite: exclude;
-  opacity: 0.5;
-  pointer-events: none;
+@media (max-width: 880px) {
+  .lnk__card {
+    grid-template-columns: 1fr;
+    padding: 32px 24px;
+    gap: 28px;
+  }
 }
-.tradeoff h3 {
-  font-size: 1rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  margin: 0 0 12px;
+.lnk__visual {
+  background:
+    radial-gradient(ellipse at center, rgba(120, 200, 220, 0.06), transparent 65%),
+    var(--bg-soft);
+  border-radius: var(--radius-sm);
+  padding: 32px 20px;
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.lnk__visual svg {
+  width: 100%;
+  height: auto;
+  max-width: 460px;
+}
+.lnk__copy h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0 0 16px;
   color: var(--fg);
 }
-.tradeoff p {
-  margin: 0;
+.lnk__copy p {
+  font-size: 0.95rem;
+  line-height: 1.6;
   color: var(--fg-dim);
-  line-height: 1.65;
-  font-size: 0.97rem;
+  margin: 0 0 14px;
+}
+.lnk__copy p:last-child {
+  margin-bottom: 0;
+}
+.lnk__copy p strong {
+  color: var(--fg);
+  font-weight: 500;
+}
+
+/* SVG-internal text classes */
+.lnk-addr-text {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  fill: var(--fg);
+}
+.lnk-addr-text--dim {
+  fill: var(--fg-dim);
+}
+.lnk-cap {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.lnk-cap--dim {
+  fill: var(--fg-muted);
+}
+
+/* Animations */
+@keyframes lnk-flow {
+  to { stroke-dashoffset: -12; }
+}
+@keyframes lnk-glow {
+  0%, 100% { opacity: 0.85; }
+  50%      { opacity: 1; }
+}
+@keyframes lnk-fade-in {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+.lnk-flow {
+  stroke-dasharray: 3 4;
+  animation: lnk-flow 0.9s linear infinite;
+}
+.lnk-glow {
+  animation: lnk-glow 2.2s ease-in-out infinite;
+}
+.lnk-fade-1 { animation: lnk-fade-in 0.6s ease-out 0.2s both; }
+.lnk-fade-2 { animation: lnk-fade-in 0.6s ease-out 0.5s both; }
+.lnk-fade-3 { animation: lnk-fade-in 0.6s ease-out 0.8s both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .lnk-flow,
+  .lnk-glow,
+  .lnk-fade-1,
+  .lnk-fade-2,
+  .lnk-fade-3 { animation: none; }
 }
 
 /* ---- Integration section --------------------------------------------- */
