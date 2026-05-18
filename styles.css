@@ -177,12 +177,11 @@ main {
 }
 
 .hero__title {
-  font-size: clamp(2.2rem, 4.8vw, 3.4rem);
-  line-height: 1.08;
-  letter-spacing: -0.035em;
+  font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
   font-weight: 600;
   margin: 0 0 20px;
-  text-wrap: balance;
 }
 
 .grad-text {
@@ -310,14 +309,8 @@ main {
   padding: 0;
   margin: 56px 0 0;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 14px;
-}
-@media (max-width: 920px) {
-  .steps { grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 520px) {
-  .steps { grid-template-columns: 1fr; }
 }
 .steps li {
   background: var(--bg-elev);
@@ -325,6 +318,7 @@ main {
   border-radius: var(--radius);
   padding: 0;
   overflow: hidden;
+  min-width: 0;
   transition: border-color 200ms, transform 200ms;
 }
 .steps li:hover {
