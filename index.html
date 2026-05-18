@@ -82,7 +82,7 @@
             <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M8 4h8l4 4v12a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 8h8m-8 4h8m-8-8h4" />
           </svg>
           <span class="store__label">
-            <span class="store__small">Read the contract</span>
+            <span class="store__small">Registry Contract</span>
             <span class="store__big">Base Sepolia</span>
           </span>
         </a>
@@ -95,7 +95,7 @@
     </section>
 
     <section id="integration" class="section section--integration">
-      <h2>The whole integration</h2>
+      <h2>The Integration</h2>
       <p class="section__lede">
         Two view functions on a public contract. No SDK to install,
         no proof to verify client-side, no service to depend on.
@@ -118,7 +118,7 @@ claimed[id] = <span class="hl-kw">true</span>;</code></pre>
       <p class="integration__note">
         There's no SDK. Protocols just call the contract directly. Any sigilized
         address is visible to anyone reading the registry. No passport data ever
-        touches the chain. The registry only records that an address has been
+        touches the chain nor saved on the phone. The registry only records that an address has been
         verified with a valid passport.
       </p>
     </section>
@@ -139,7 +139,7 @@ claimed[id] = <span class="hl-kw">true</span>;</code></pre>
           <div class="step__body">
             <span class="step__num">01</span>
             <h3>Select an address</h3>
-            <p>Open the Sigil app, connect a wallet, and pick the address you want to sigilize. The proof is bound to that address only.</p>
+            <p>Open the Sigil app, connect a wallet, and pick the address you want to sigilize.</p>
           </div>
         </li>
         <li>
@@ -159,7 +159,7 @@ claimed[id] = <span class="hl-kw">true</span>;</code></pre>
           <div class="step__body">
             <span class="step__num">02</span>
             <h3>Scan and tap</h3>
-            <p>Scan the MRZ on your passport, then hold the passport to the phone. The app reads DG1 and the Security Object over NFC using ICAO 9303 BAC. Nothing leaves the phone.</p>
+            <p>Scan the MRZ on your passport, then hold the passport to the phone. The app reads DG1 and the Security Object over NFC. Nothing leaves the phone nor saved on it.</p>
           </div>
         </li>
         <li>
@@ -178,7 +178,7 @@ claimed[id] = <span class="hl-kw">true</span>;</code></pre>
           <div class="step__body">
             <span class="step__num">03</span>
             <h3>Prove on-device</h3>
-            <p>A Noir circuit checks the passport's signature chain and derives an opaque per-passport ID. The whole proof runs on the phone in about 5–15 seconds with Mopro.</p>
+            <p>A Noir circuit checks the passport's signature chain and derives an opaque per-passport ID. The whole proof runs on the phone.</p>
           </div>
         </li>
         <li>
@@ -210,7 +210,7 @@ claimed[id] = <span class="hl-kw">true</span>;</code></pre>
     <section id="privacy" class="section section--privacy">
       <h2>What's actually on-chain</h2>
       <p class="section__lede">
-        Your passport stays on the phone. The name, date of birth, nationality, and passport number never reach the chain.
+        Your passport data never leaves the phone and is never saved. The name, date of birth, nationality, and passport number never reach the chain.
       </p>
       <div class="onchain">
         <div class="onchain__col onchain__col--yes">
@@ -219,7 +219,6 @@ claimed[id] = <span class="hl-kw">true</span>;</code></pre>
             <li>An opaque nullifier (one-way hash of your passport secret)</li>
             <li>The address that registered it</li>
             <li>A registration timestamp and expiry, rounded to 90-day buckets</li>
-            <li>The zero-knowledge proof itself</li>
           </ul>
         </div>
         <div class="onchain__col onchain__col--no">
