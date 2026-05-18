@@ -123,45 +123,6 @@ claimed[id] = <span class="hl-kw">true</span>;</code></pre>
       </p>
     </section>
 
-    <section id="audiences" class="section section--audiences">
-      <h2>Two sides, one mapping</h2>
-      <p class="section__lede">
-        Sigil works the same way whether you're someone who wants their addresses attested,
-        or a protocol that wants to filter for real people.
-      </p>
-      <div class="audiences">
-        <div class="audience">
-          <span class="audience__tag">For Users</span>
-          <h3>You tap once. Your addresses get verified.</h3>
-          <p>
-            Your passport produces one stable, opaque ID — the same value every time, for
-            this passport only. Attach it to as many addresses as you own; they all share that
-            ID on-chain. Addresses you leave alone stay anonymous.
-          </p>
-          <ul class="audience__list">
-            <li>Get your fair share of airdrops, votes, and signups instead of having them diluted by bots.</li>
-            <li>No name, DOB, or passport number ever touches the chain.</li>
-            <li>Unregister any time.</li>
-          </ul>
-        </div>
-        <div class="audience">
-          <span class="audience__tag">For Protocols</span>
-          <h3>Tell users to sigilize. Read one mapping.</h3>
-          <p>
-            That's the integration. No SDK to install, no QR code to host, no proof to verify
-            on your end. Once a user sigilizes their address here, any contract or backend can
-            read <code>isVerified(address)</code> for personhood and <code>nullifierOf(address)</code>
-            for sybil dedup.
-          </p>
-          <ul class="audience__list">
-            <li>Two free Solidity view functions, no API key to manage.</li>
-            <li>Each passport produces exactly one nullifier — that's what makes dedup work.</li>
-            <li>Proofs are bound to <code>msg.sender</code>, so they can't be reused on a different address.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
     <section id="how" class="section">
       <h2>How it works</h2>
       <ol class="steps">
@@ -210,13 +171,14 @@ claimed[id] = <span class="hl-kw">true</span>;</code></pre>
       </div>
 
       <div class="tradeoff">
-        <h3>How linkability works</h3>
+        <h3>Linkability is the mechanism</h3>
         <p>
-          Every address you sigilize with the same passport shares the same on-chain ID. That's
-          the mechanism: same passport, same ID, anywhere it shows up. As a result, anyone reading
-          the chain can tell which of your sigilized addresses are linked to each other. It's a
-          real privacy cost, and it's the trade Sigil makes to keep verification a single mapping
-          read for any protocol. Addresses you don't sigilize are unaffected; they stay pseudonymous.
+          Every address you sigilize with the same passport shares the same on-chain ID.
+          That's the whole point — it's what makes one-person-one-share work without each
+          protocol running its own proof ceremony. The visible consequence: anyone reading
+          the chain can tell which of your sigilized addresses belong to the same passport.
+          The control sits with you, per wallet — addresses you don't sigilize stay
+          pseudonymous, so if you want a wallet kept separate, just don't register it.
         </p>
       </div>
     </section>
