@@ -301,6 +301,22 @@ main {
   color: var(--fg-dim);
   font-size: 1.05rem;
 }
+.section__prose {
+  max-width: 680px;
+  margin: 48px auto 0;
+  color: var(--fg-dim);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+.section__prose p {
+  margin: 0 0 18px;
+}
+.section__prose p:last-child {
+  margin-bottom: 0;
+}
+.section__prose code {
+  font-size: 0.9em;
+}
 
 /* ---- Steps ------------------------------------------------------------ */
 

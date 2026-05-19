@@ -57,13 +57,20 @@
       </div>
 
       <h1 class="hero__title">
-        Proof of personhood for your address,<br />
-        <span class="grad-text">backed by your passport.</span>
+        Sigil is a passport-based identity<br />
+        registry for Ethereum addresses.
       </h1>
 
       <p class="hero__lede">
-        An open source on-chain registry. Tap your passport once. Any other protocol
-        can verify you with a single contract read.
+        The idea is that you can prove you're a real person to a smart contract by
+        holding your biometric passport against your phone. The app builds a
+        zero-knowledge proof that the passport is genuine and binds it to one of
+        your addresses. That proof goes into a public registry on-chain, and any
+        other contract or service can check it with a single read.
+      </p>
+      <p class="hero__lede">
+        Sigil is open source, free to use, and currently testnet-only on Base
+        Sepolia. There's no company behind it and no token. It's an experiment.
       </p>
 
       <div class="cta-row">
@@ -95,9 +102,9 @@
     </section>
 
     <section id="integration" class="section section--integration">
-      <h2>The verification check</h2>
+      <h2>Using it from a contract</h2>
       <p class="section__lede">
-        Protocols or services call two view functions on the registry directly. No SDK, no API key, no fees. One returns whether an address is verified. The other returns the person ID it's bound to for sybil resistance.
+        Sigil is meant for smart contracts that should treat real people differently from bots. Airdrops are the obvious case. DAO votes, faucets, and quadratic funding pools all face the same problem: bot farms running thousands of addresses can drain a pool or skew an outcome.
       </p>
 
       <div class="snippets">
@@ -120,6 +127,19 @@ claimed[id] = <span class="hl-kw">true</span>;</code></pre>
         </div>
       </div>
 
+      <div class="section__prose">
+        <p>
+          <code>isVerified(address)</code> returns true if a real passport is currently
+          registered to that address. <code>nullifierOf(address)</code> returns a
+          per-passport ID, the same value for every address the same passport has
+          registered. If you track that ID in a seen set, one passport gets one share
+          regardless of how many addresses it controls.
+        </p>
+        <p>
+          Both are <code>view</code> functions, so reads are free. There's nothing
+          else to install.
+        </p>
+      </div>
     </section>
 
     <section id="how" class="section">
