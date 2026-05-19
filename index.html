@@ -6,11 +6,11 @@
   <meta name="color-scheme" content="dark" />
   <meta name="theme-color" content="#0a0a10" />
 
-  <title>Sigil — proof of personhood for any protocol, backed by your passport</title>
-  <meta name="description" content="An open source on-chain registry. Tap your passport once. Any other protocol can verify you with a single contract read. No SDK, no API key, no fees." />
+  <title>Sigil — proof of personhood for your address, backed by your passport</title>
+  <meta name="description" content="An open source on-chain registry. Tap your passport once. Any protocol or service can verify you with a single contract call." />
 
-  <meta property="og:title" content="Sigil — proof of personhood for any protocol, backed by your passport" />
-  <meta property="og:description" content="An open source on-chain registry. Tap your passport once. Any other protocol can verify you with a single contract read. No SDK, no API key, no fees." />
+  <meta property="og:title" content="Sigil — proof of personhood for your address, backed by your passport" />
+  <meta property="og:description" content="An open source on-chain registry. Tap your passport once. Any other protocol can verify you with a single contract read." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://zksigil.xyz" />
   <meta property="og:image" content="https://zksigil.xyz/assets/icon.png" />
@@ -57,13 +57,13 @@
       </div>
 
       <h1 class="hero__title">
-        Proof of personhood for any protocol,<br />
+        Proof of personhood for your address,<br />
         <span class="grad-text">backed by your passport.</span>
       </h1>
 
       <p class="hero__lede">
         An open source on-chain registry. Tap your passport once. Any other protocol
-        can verify you with a single contract read. No SDK, no API key, no fees.
+        can verify you with a single contract read.
       </p>
 
       <div class="cta-row">
@@ -95,28 +95,33 @@
     </section>
 
     <section id="integration" class="section section--integration">
-      <h2>The Integration</h2>
+      <h2>The verification process</h2>
       <p class="section__lede">
-        Two view functions on a public contract. No SDK to install,
-        no proof to verify client-side, no service to depend on.
+        Protocols or services can call two view functions on the registry. One returns whether an address is verified. The other returns the person ID it's bound to.
       </p>
 
-      <div class="snippet">
-        <div class="snippet__header">
-          <span class="snippet__lang">Solidity</span>
-          <span class="snippet__caption">Personhood gate + sybil dedup</span>
+      <div class="snippets">
+        <div class="snippet">
+          <div class="snippet__header">
+            <span class="snippet__caption">Personhood check</span>
+          </div>
+<pre><code><span class="hl-com">// Require a real person behind the caller.</span>
+<span class="hl-kw">require</span>(sigil.isVerified(msg.sender), <span class="hl-typ">"not verified"</span>);</code></pre>
         </div>
-<pre><code><span class="hl-com">// Require a real person behind the caller's address.</span>
-<span class="hl-kw">require</span>(sigil.isVerified(msg.sender), <span class="hl-typ">"not human"</span>);
 
-<span class="hl-com">// Dedupe by passport, not by address.</span>
+        <div class="snippet">
+          <div class="snippet__header">
+            <span class="snippet__caption">Sybil dedup</span>
+          </div>
+<pre><code><span class="hl-com">// Dedupe by passport, not by address.</span>
 <span class="hl-typ">bytes32</span> id = sigil.nullifierOf(msg.sender);
 <span class="hl-kw">require</span>(!claimed[id], <span class="hl-typ">"already claimed"</span>);
 claimed[id] = <span class="hl-kw">true</span>;</code></pre>
+        </div>
       </div>
 
       <p class="integration__note">
-        There's no SDK. Protocols just call the contract directly. Any sigilized
+        Protocols just call the contract directly. Any sigilized
         address is visible to anyone reading the registry. No passport data ever
         touches the chain nor saved on the phone. The registry only records that an address has been
         verified with a valid passport.
@@ -201,7 +206,7 @@ claimed[id] = <span class="hl-kw">true</span>;</code></pre>
           <div class="step__body">
             <span class="step__num">04</span>
             <h3>Register on-chain</h3>
-            <p>Submit the proof to the registry. After that, any contract or backend can look up the address with one Solidity call: <code>isVerified(address)</code> for personhood, <code>nullifierOf(address)</code> for sybil dedup.</p>
+            <p>Submit the proof to the registry. After that, any contract or backend can look up the address with one call: <code>isVerified(address)</code> for personhood, <code>nullifierOf(address)</code> for sybil dedup.</p>
           </div>
         </li>
       </ol>
@@ -283,8 +288,8 @@ claimed[id] = <span class="hl-kw">true</span>;</code></pre>
           <div class="lnk__copy">
             <h3>⚠️ Address Linkability</h3>
             <p>
-              Every address you sigilize with the same passport shares the same
-              on-chain ID. It's what allows for sybil resistance
+              You can register multiple addresses with the same passport, but every address you sigilize shares the same
+              nullifier ID.
             </p>
             <p>
               <strong>The visible consequence:</strong> anyone reading the chain
