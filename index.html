@@ -317,68 +317,6 @@ claimed[id] = <span class="hl-kw">true</span>;</code></pre>
       </div>
     </section>
 
-    <section id="protocols" class="section section--protocols">
-      <h2>Where it fits</h2>
-      <p class="section__lede">
-        Two functions, dropped in front of anything that should happen at most once per real person.
-      </p>
-
-      <div class="pillars">
-        <div class="pillar">
-          <span class="pillar__tag">Personhood</span>
-          <h3>Personhood check</h3>
-          <p>
-            <code>isVerified(address)</code> returns <code>true</code> when there's a real person currently attested to the address. Drop it in front of an airdrop claim, a faucet, a governance vote, a signup bonus. Addresses without a human behind them get filtered out.
-          </p>
-        </div>
-        <div class="pillar">
-          <span class="pillar__tag">Sybil resistance</span>
-          <h3>One passport, one share</h3>
-          <p>
-            <code>nullifierOf(address)</code> returns a stable per-person ID. Same value for every address that person has sigilized. Track it in a <code>seen[]</code> set and one passport participates once, no matter how many addresses it controls.
-          </p>
-        </div>
-      </div>
-
-      <h3 class="usecases__title">Common shapes</h3>
-      <div class="usecases">
-        <div class="usecase">
-          <span class="usecase__icon" aria-hidden="true">⤓</span>
-          <h4>Airdrops</h4>
-          <p>One claim per person, even if they have ten addresses.</p>
-        </div>
-        <div class="usecase">
-          <span class="usecase__icon" aria-hidden="true">⊙</span>
-          <h4>DAO voting</h4>
-          <p>One vote per person. No KYC.</p>
-        </div>
-        <div class="usecase">
-          <span class="usecase__icon" aria-hidden="true">⊞</span>
-          <h4>Quadratic funding</h4>
-          <p>Matching pools that don't break when someone spins up 50 addresses.</p>
-        </div>
-        <div class="usecase">
-          <span class="usecase__icon" aria-hidden="true">⌬</span>
-          <h4>Onboarding rewards</h4>
-          <p>Sign-up bonuses that aren't farmed into the ground.</p>
-        </div>
-        <div class="usecase">
-          <span class="usecase__icon" aria-hidden="true">◇</span>
-          <h4>Reputation &amp; reviews</h4>
-          <p>One review per person, not per fake account.</p>
-        </div>
-        <div class="usecase">
-          <span class="usecase__icon" aria-hidden="true">⊜</span>
-          <h4>Rate limiting</h4>
-          <p>Per-person quotas instead of per-address. Spinning up new addresses gets you nowhere.</p>
-        </div>
-      </div>
-
-      <p class="protocols__note">
-        Off-chain works the same way. A backend can <code>eth_call</code> the registry before issuing an API key or validating a signup. The read is just public state, no roundtrip to the user's device.
-      </p>
-    </section>
-
     <section id="about" class="section section--about">
       <h2>About</h2>
       <p class="section__lede">
