@@ -95,9 +95,9 @@
     </section>
 
     <section id="integration" class="section section--integration">
-      <h2>The verification process</h2>
+      <h2>The verification check</h2>
       <p class="section__lede">
-        Protocols or services can call two view functions on the registry. One returns whether an address is verified. The other returns the person ID it's bound to.
+        Protocols or services call two view functions on the registry directly. No SDK, no API key, no fees. One returns whether an address is verified. The other returns the person ID it's bound to for sybil resistance.
       </p>
 
       <div class="snippets">
@@ -120,12 +120,6 @@ claimed[id] = <span class="hl-kw">true</span>;</code></pre>
         </div>
       </div>
 
-      <p class="integration__note">
-        Protocols just call the contract directly. Any sigilized
-        address is visible to anyone reading the registry. No passport data ever
-        touches the chain nor saved on the phone. The registry only records that an address has been
-        verified with a valid passport.
-      </p>
     </section>
 
     <section id="how" class="section">

@@ -599,19 +599,6 @@ main {
   margin-top: 0;
 }
 
-.integration__note {
-  max-width: 720px;
-  margin: 36px auto 0;
-  text-align: center;
-  color: var(--fg-dim);
-  font-size: 0.97rem;
-  line-height: 1.65;
-}
-.integration__note em {
-  color: var(--fg);
-  font-style: italic;
-}
-
 /* ---- Protocols section ------------------------------------------------ */
 
 .section--protocols {
