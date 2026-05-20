@@ -230,20 +230,19 @@ main {
   align-items: center;
   gap: 12px;
   padding: 14px 22px;
-  background:
-    linear-gradient(var(--bg-elev), var(--bg-elev)) padding-box,
-    var(--grad) border-box;
-  border: 1px solid transparent;
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
   border-radius: var(--radius);
   color: var(--fg);
   font-weight: 500;
-  transition: transform 120ms ease, background 160ms ease;
+  transition: transform 120ms ease, border-color 160ms ease, background 160ms ease;
   position: relative;
 }
 .store:hover {
   transform: translateY(-1px);
+  border-color: transparent;
   background:
-    linear-gradient(var(--bg-soft), var(--bg-soft)) padding-box,
+    linear-gradient(var(--bg-elev), var(--bg-elev)) padding-box,
     var(--grad) border-box;
 }
 .store__label {
