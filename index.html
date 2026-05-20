@@ -105,6 +105,12 @@
           </div>
 <pre><code><span class="hl-com">// Require a real person behind the caller.</span>
 <span class="hl-kw">require</span>(sigil.isVerified(msg.sender), <span class="hl-typ">"not verified"</span>);</code></pre>
+          <div class="snippet__desc">
+            <p>
+              <code>isVerified(address)</code> returns true if a real passport is
+              currently registered to that address.
+            </p>
+          </div>
         </div>
 
         <div class="snippet">
@@ -115,21 +121,15 @@
 <span class="hl-typ">bytes32</span> id = sigil.nullifierOf(msg.sender);
 <span class="hl-kw">require</span>(!claimed[id], <span class="hl-typ">"already claimed"</span>);
 claimed[id] = <span class="hl-kw">true</span>;</code></pre>
+          <div class="snippet__desc">
+            <p>
+              <code>nullifierOf(address)</code> returns a per-passport ID, the same
+              value for every address the same passport has registered. If you track
+              that ID in a seen set, one passport gets one share regardless of how
+              many addresses it controls.
+            </p>
+          </div>
         </div>
-      </div>
-
-      <div class="section__prose">
-        <p>
-          <code>isVerified(address)</code> returns true if a real passport is currently
-          registered to that address. <code>nullifierOf(address)</code> returns a
-          per-passport ID, the same value for every address the same passport has
-          registered. If you track that ID in a seen set, one passport gets one share
-          regardless of how many addresses it controls.
-        </p>
-        <p>
-          Both are <code>view</code> functions, so reads are free. There's nothing
-          else to install.
-        </p>
       </div>
     </section>
 
