@@ -680,19 +680,18 @@ main {
 .hl-typ { color: oklch(82% 0.16 200); }
 .hl-com { color: var(--fg-muted); font-style: italic; }
 
-.snippet__desc {
-  padding: 16px 22px 18px;
-  border-top: 1px solid var(--line-soft);
+.snippet-block {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.snippet-block__desc {
+  margin: 0;
   color: var(--fg-dim);
   font-size: 0.9rem;
   line-height: 1.6;
 }
-.snippet__desc p {
-  margin: 0;
-}
-.snippet__desc code {
-  background: var(--bg-soft);
-  border-color: var(--line-soft);
+.snippet-block__desc code {
   font-size: 0.9em;
 }
 

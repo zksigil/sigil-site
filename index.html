@@ -99,36 +99,36 @@
       </p>
 
       <div class="snippets">
-        <div class="snippet">
-          <div class="snippet__header">
-            <span class="snippet__caption">Personhood check</span>
-          </div>
+        <div class="snippet-block">
+          <div class="snippet">
+            <div class="snippet__header">
+              <span class="snippet__caption">Personhood check</span>
+            </div>
 <pre><code><span class="hl-com">// Require a real person behind the caller.</span>
 <span class="hl-kw">require</span>(sigil.isVerified(msg.sender), <span class="hl-typ">"not verified"</span>);</code></pre>
-          <div class="snippet__desc">
-            <p>
-              <code>isVerified(address)</code> returns true if a real passport is
-              currently registered to that address.
-            </p>
           </div>
+          <p class="snippet-block__desc">
+            <code>isVerified(address)</code> returns true if a real passport is
+            currently registered to that address.
+          </p>
         </div>
 
-        <div class="snippet">
-          <div class="snippet__header">
-            <span class="snippet__caption">Sybil dedup</span>
-          </div>
+        <div class="snippet-block">
+          <div class="snippet">
+            <div class="snippet__header">
+              <span class="snippet__caption">Sybil dedup</span>
+            </div>
 <pre><code><span class="hl-com">// Dedupe by passport, not by address.</span>
 <span class="hl-typ">bytes32</span> id = sigil.nullifierOf(msg.sender);
 <span class="hl-kw">require</span>(!claimed[id], <span class="hl-typ">"already claimed"</span>);
 claimed[id] = <span class="hl-kw">true</span>;</code></pre>
-          <div class="snippet__desc">
-            <p>
-              <code>nullifierOf(address)</code> returns a per-passport ID, the same
-              value for every address the same passport has registered. If you track
-              that ID in a seen set, one passport gets one share regardless of how
-              many addresses it controls.
-            </p>
           </div>
+          <p class="snippet-block__desc">
+            <code>nullifierOf(address)</code> returns a per-passport ID, the same
+            value for every address the same passport has registered. If you track
+            that ID in a seen set, one passport gets one share regardless of how
+            many addresses it controls.
+          </p>
         </div>
       </div>
     </section>
