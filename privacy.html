@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#0a0a10" />
+
+  <title>Privacy — Sigil</title>
+  <meta name="description" content="What Sigil collects, what stays on your device, and what goes on-chain." />
+
+  <link rel="icon" type="image/svg+xml" href="assets/sigil-mark.svg" />
+  <link rel="apple-touch-icon" href="assets/icon.png" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <link rel="preconnect" href="https://rsms.me/" />
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+</head>
+<body>
+  <div class="grid-bg" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a class="brand" href="/" aria-label="Sigil home">
+      <img src="assets/sigil-mark.svg" alt="" width="28" height="28" />
+      <span>sigil</span>
+    </a>
+    <nav class="nav__links">
+      <a href="index.html#integration">Integration</a>
+      <a href="index.html#how">How it works</a>
+      <a href="index.html#privacy">Privacy</a>
+      <a href="index.html#about">About</a>
+      <a href="https://github.com/zksigil/sigil-monorepo" class="cta--github" aria-label="GitHub repository">GitHub</a>
+    </nav>
+  </header>
+
+  <main class="prose">
+    <h1>Privacy Policy</h1>
+    <p class="prose__meta">Last updated: 21 May 2026</p>
+
+    <p class="prose__lede">
+      Sigil is built around a simple promise: your passport data never leaves your phone. This
+      page explains what that means in practice — what we collect (nothing), what stays on
+      your device, what goes on a public blockchain, and which third-party services your phone
+      talks to while using the app.
+    </p>
+
+    <h2>1. What Sigil collects from you</h2>
+    <p>
+      <strong>Nothing.</strong> Sigil has no user accounts, no login, no analytics, no telemetry,
+      no crash-reporting services, and no advertising SDKs. We don't operate any servers that
+      receive data from the app. We don't know you've installed it, opened it, scanned your
+      passport, or sigilized an address.
+    </p>
+
+    <h2>2. What's processed on your device only</h2>
+    <p>The app reads and processes the following entirely on-device:</p>
+    <ul>
+      <li>
+        <strong>Passport chip data</strong> read over NFC: specifically the DG1 data group
+        (your machine-readable zone — name, date of birth, nationality, passport number,
+        expiry) and the SOD (the cryptographic signature of the passport contents). These are
+        used to generate a zero-knowledge proof.
+      </li>
+      <li>
+        <strong>The MRZ printed on your passport</strong>, read via your phone's camera using
+        on-device OCR. The image is processed by Apple's Vision framework (via Google ML Kit's
+        bundled local model on iOS) and discarded; nothing is uploaded.
+      </li>
+      <li>
+        <strong>QR codes</strong> scanned with the camera during wallet connection (the
+        WalletConnect handshake URI).
+      </li>
+      <li>
+        <strong>Wallet addresses</strong> the user authorizes via their connected wallet
+        (MetaMask, Rainbow, Coinbase Wallet, etc.).
+      </li>
+      <li>
+        <strong>Zero-knowledge proof generation</strong>: a Noir circuit compiled to native
+        Rust (via Mopro) runs on a background thread on the device and produces the proof.
+      </li>
+    </ul>
+    <p>
+      None of the above is transmitted to Sigil or to any third party. The passport chip
+      bytes, MRZ values, camera frames, and proof inputs all stay in device memory and are
+      released when the screen is dismissed.
+    </p>
+
+    <h2>3. What goes on the blockchain</h2>
+    <p>
+      When you sigilize an address, the app submits a single transaction to the Sigil
+      registry smart contract on Base (or Base Sepolia for testing). That transaction
+      contains:
+    </p>
+    <ul>
+      <li>An <strong>opaque nullifier</strong> — a one-way hash derived from your passport's
+        cryptographic signature. It cannot be reversed to recover any passport contents.</li>
+      <li>An <strong>epoch nullifier</strong> — a daily one-way hash used to rate-limit new
+        registrations to 10 per passport per day. Also cannot be reversed.</li>
+      <li>Your <strong>wallet address</strong> (the from-field of the transaction).</li>
+      <li>The <strong>zero-knowledge proof bytes</strong>.</li>
+      <li>Your <strong>passport's expiry date, rounded up to the next 90-day boundary</strong>.
+        This rounding collapses the ~365 distinct expiry dates per year into 4 quarterly
+        buckets to reduce identifying information on-chain.</li>
+    </ul>
+    <p>
+      Your name, date of birth, nationality, sex, passport number, MRZ contents, raw chip
+      bytes, and any biometric data are <strong>never</strong> submitted on-chain or
+      transmitted anywhere.
+    </p>
+    <p>
+      Multiple addresses sigilized with the same passport share the same opaque nullifier
+      on-chain, meaning they are publicly linkable to one another as belonging to the same
+      person. This is the explicit design — protocols use it for sybil resistance. Addresses
+      you choose <em>not</em> to sigilize remain anonymous.
+    </p>
+
+    <h2>4. Third-party services the app communicates with</h2>
+    <p>The app makes network requests to the services below for the limited purposes listed.
+       None of them receive passport data.</p>
+    <ul>
+      <li>
+        <strong>WalletConnect relay (operated by Reown)</strong>: when you connect a wallet,
+        the app uses the WalletConnect v2 protocol. Reown's relay servers route end-to-end
+        encrypted messages between Sigil and your wallet app. Reown's privacy practices:
+        <a href="https://reown.com/privacy-policy">reown.com/privacy-policy</a>.
+      </li>
+      <li>
+        <strong>Ethereum RPC providers</strong>: to read on-chain state and submit
+        transactions, the app sends queries to Base or Base Sepolia RPC endpoints (defaults
+        <code>mainnet.base.org</code> and <code>sepolia.base.org</code>). For ENS name
+        resolution, the app queries an Ethereum mainnet endpoint (default
+        <code>ethereum.publicnode.com</code>). These providers see your IP address and the
+        content of the RPC queries (which addresses you're checking status for) but do not
+        receive passport data.
+      </li>
+    </ul>
+
+    <h2>5. Permissions the app requests</h2>
+    <ul>
+      <li>
+        <strong>NFC ("NFC Tag Reading")</strong>: required, used to read the passport chip
+        following the ICAO 9303 international standard for electronic Machine Readable Travel
+        Documents. This is the same protocol used by airport e-gates worldwide.
+      </li>
+      <li>
+        <strong>Camera</strong>: used to scan the MRZ printed on your passport (so you don't
+        have to type it manually) and to scan WalletConnect QR codes when connecting a wallet
+        from another device. Camera frames are processed on-device and never uploaded.
+      </li>
+    </ul>
+
+    <h2>6. Data you can delete</h2>
+    <ul>
+      <li>
+        <strong>Local app data</strong> (tracked addresses, education-modal dismissal flags,
+        WalletConnect session): uninstall the app to clear it entirely. The app stores nothing
+        outside its own sandbox.
+      </li>
+      <li>
+        <strong>On-chain registrations</strong>: open the app, expand the address in your
+        accounts list, and tap "Unregister". This calls the registry contract's
+        <code>unregister</code> function and removes the active registration entry. Note that
+        Ethereum transactions are immutable, so the historical fact that the address was once
+        registered remains visible in chain history.
+      </li>
+    </ul>
+
+    <h2>7. Children</h2>
+    <p>
+      Sigil is intended for adults. The minimum age to use the app is determined by your
+      local jurisdiction's rules for obtaining a passport (typically requires either parental
+      consent for minors or majority age).
+    </p>
+
+    <h2>8. Changes to this policy</h2>
+    <p>
+      Material changes will be announced on the Sigil GitHub repository
+      (<a href="https://github.com/zksigil/sigil-monorepo">github.com/zksigil/sigil-monorepo</a>)
+      and the "Last updated" date above will be revised.
+    </p>
+
+    <h2>9. Contact</h2>
+    <p>
+      Sigil is an open-source project. For privacy questions, file an issue at
+      <a href="https://github.com/zksigil/sigil-monorepo/issues">github.com/zksigil/sigil-monorepo/issues</a>.
+    </p>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <img src="assets/sigil-mark.svg" alt="" width="20" height="20" />
+        <span>sigil</span>
+      </div>
+      <nav class="footer__links">
+        <a href="#" class="cta--twitter">Twitter</a>
+        <a href="https://github.com/zksigil/sigil-monorepo" class="cta--github">GitHub</a>
+        <a href="https://sepolia.basescan.org/address/0x6f692eba653ef8ff9048cbf5555bd700c78b414f" target="_blank" rel="noopener noreferrer">Contract</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+      <p class="footer__small">Experimental. Testnet only. Use at your own risk.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -807,3 +807,71 @@ button:focus-visible {
   outline-offset: 3px;
   border-radius: var(--radius-sm);
 }
+
+/* ---- Prose pages (privacy, terms, etc.) ------------------------------- */
+/* Long-form text pages reuse the same nav/footer but need readable
+   typography. Constrains width, lifts vertical rhythm, links are clearly
+   distinguishable. */
+
+.prose {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 48px 24px 96px;
+}
+
+.prose h1 {
+  font-size: 2rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin: 0 0 8px;
+}
+
+.prose h2 {
+  font-size: 1.15rem;
+  line-height: 1.3;
+  margin: 40px 0 12px;
+  color: var(--fg);
+}
+
+.prose__meta {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--fg-muted);
+  margin: 0 0 24px;
+}
+
+.prose__lede {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--fg-dim);
+  margin: 0 0 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.prose p,
+.prose li {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--fg-dim);
+}
+
+.prose p { margin: 0 0 14px; }
+
+.prose ul {
+  margin: 0 0 18px;
+  padding-left: 22px;
+}
+
+.prose li { margin-bottom: 8px; }
+
+.prose strong { color: var(--fg); font-weight: 600; }
+
+.prose a {
+  color: var(--accent-cyan);
+  text-decoration: underline;
+  text-decoration-color: oklch(84% 0.18 190 / 0.4);
+  text-underline-offset: 2px;
+  transition: text-decoration-color 120ms;
+}
+.prose a:hover { text-decoration-color: var(--accent-cyan); }
