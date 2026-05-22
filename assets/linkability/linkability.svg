@@ -1,36 +1,62 @@
-<?xml version="1.0"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 300" width="460" height="300">
-<rect x="18" y="86" width="80" height="110" rx="6" fill="rgba(255,255,255,0.08)"></rect>
-<rect x="18" y="86" width="80" height="110" rx="6" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1"></rect>
-<circle cx="58" cy="125" r="10" fill="oklch(82% 0.16 175)"></circle>
-<rect x="33" y="148" width="50" height="3.5" fill="oklch(82% 0.16 175)" opacity="0.55"></rect>
-<rect x="33" y="157" width="50" height="3.5" fill="oklch(82% 0.16 175)" opacity="0.35"></rect>
-<rect x="33" y="166" width="50" height="3.5" fill="oklch(82% 0.16 175)" opacity="0.2"></rect>
-<text x="58" y="80" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="1.35" fill="oklch(82% 0.16 175)" opacity="0.7">PASSPORT</text>
+  <style>
+    .lnk-addr-text { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; fill: #e8e8f0; }
+    .lnk-addr-text--dim { fill: #a0a0b0; }
+    .lnk-cap { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; }
+    .lnk-cap--dim { fill: #6e6e80; }
 
-<rect x="148" y="118" width="104" height="46" rx="8" fill="oklch(82% 0.16 175)" opacity="0.12"></rect>
-<rect x="148" y="118" width="104" height="46" rx="8" fill="none" stroke="oklch(82% 0.16 175)" stroke-width="1"></rect>
-<text x="200" y="135" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="1.35" fill="oklch(82% 0.16 175)" opacity="0.85">SHARED ID</text>
-<text x="200" y="153" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="oklch(82% 0.16 175)" font-weight="500">0x71…a3</text>
+    @keyframes lnk-flow { to { stroke-dashoffset: -12; } }
+    @keyframes lnk-glow { 0%, 100% { opacity: 0.85; } 50% { opacity: 1; } }
+    @keyframes lnk-fade-in { 0% { opacity: 0; } 100% { opacity: 1; } }
+    .lnk-flow { stroke-dasharray: 3 4; animation: lnk-flow 0.9s linear infinite; }
+    .lnk-glow { animation: lnk-glow 2.2s ease-in-out infinite; }
+    .lnk-fade-1 { animation: lnk-fade-in 0.6s ease-out 0.2s both; }
+    .lnk-fade-2 { animation: lnk-fade-in 0.6s ease-out 0.5s both; }
+    .lnk-fade-3 { animation: lnk-fade-in 0.6s ease-out 0.8s both; }
+    @media (prefers-reduced-motion: reduce) {
+      .lnk-flow, .lnk-glow, .lnk-fade-1, .lnk-fade-2, .lnk-fade-3 { animation: none; }
+    }
+  </style>
 
-<rect x="318" y="68" width="120" height="32" rx="6" fill="oklch(82% 0.16 175)" opacity="0.14"></rect>
-<rect x="318" y="68" width="120" height="32" rx="6" fill="none" stroke="oklch(82% 0.16 175)" stroke-width="1"></rect>
-<text x="378" y="88" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#E8E6E1">0xc8…2e</text>
+  <g class="lnk-fade-1">
+    <rect x="18" y="86" width="80" height="110" rx="6" fill="rgba(255,255,255,0.08)"/>
+    <rect x="18" y="86" width="80" height="110" rx="6" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+    <circle cx="58" cy="125" r="10" fill="oklch(82% 0.16 175)"/>
+    <rect x="33" y="148" width="50" height="3.5" fill="oklch(82% 0.16 175)" opacity="0.55"/>
+    <rect x="33" y="157" width="50" height="3.5" fill="oklch(82% 0.16 175)" opacity="0.35"/>
+    <rect x="33" y="166" width="50" height="3.5" fill="oklch(82% 0.16 175)" opacity="0.2"/>
+    <text x="58" y="80" text-anchor="middle" class="lnk-cap" fill="oklch(82% 0.16 175)" opacity="0.7">PASSPORT</text>
+  </g>
 
-<rect x="318" y="125" width="120" height="32" rx="6" fill="oklch(82% 0.16 175)" opacity="0.14"></rect>
-<rect x="318" y="125" width="120" height="32" rx="6" fill="none" stroke="oklch(82% 0.16 175)" stroke-width="1"></rect>
-<text x="378" y="145" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#E8E6E1">0x7d…06</text>
+  <g class="lnk-fade-2 lnk-glow">
+    <rect x="148" y="118" width="104" height="46" rx="8" fill="oklch(82% 0.16 175)" opacity="0.12"/>
+    <rect x="148" y="118" width="104" height="46" rx="8" fill="none" stroke="oklch(82% 0.16 175)" stroke-width="1"/>
+    <text x="200" y="135" text-anchor="middle" class="lnk-cap" fill="oklch(82% 0.16 175)" opacity="0.85">Nullifier</text>
+    <text x="200" y="153" text-anchor="middle" class="lnk-addr-text" fill="oklch(82% 0.16 175)" font-weight="500">0x71…a3</text>
+  </g>
 
-<rect x="318" y="182" width="120" height="32" rx="6" fill="oklch(82% 0.16 175)" opacity="0.14"></rect>
-<rect x="318" y="182" width="120" height="32" rx="6" fill="none" stroke="oklch(82% 0.16 175)" stroke-width="1"></rect>
-<text x="378" y="202" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#E8E6E1">0xa1…f7</text>
+  <g class="lnk-fade-3">
+    <rect x="318" y="68" width="120" height="32" rx="6" fill="oklch(82% 0.16 175)" opacity="0.14"/>
+    <rect x="318" y="68" width="120" height="32" rx="6" fill="none" stroke="oklch(82% 0.16 175)" stroke-width="1"/>
+    <text x="378" y="88" text-anchor="middle" class="lnk-addr-text">0xc8…2e</text>
 
-<rect x="318" y="240" width="120" height="32" rx="6" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.12)" stroke-width="1" stroke-dasharray="3 3"></rect>
-<text x="378" y="260" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="rgba(232,230,225,0.55)">0x4b…91</text>
-<text x="378" y="283" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="1.35" fill="rgba(232,230,225,0.4)">NOT SIGILIZED · PRIVATE</text>
+    <rect x="318" y="125" width="120" height="32" rx="6" fill="oklch(82% 0.16 175)" opacity="0.14"/>
+    <rect x="318" y="125" width="120" height="32" rx="6" fill="none" stroke="oklch(82% 0.16 175)" stroke-width="1"/>
+    <text x="378" y="145" text-anchor="middle" class="lnk-addr-text">0x7d…06</text>
 
-<path d="M98 141 L148 141" stroke="oklch(82% 0.16 175)" stroke-width="1.25"></path>
-<path d="M252 141 C 285 141, 285 84,  318 84" stroke="oklch(82% 0.16 175)" stroke-width="1.25" fill="none"></path>
-<path d="M252 141 L 318 141" stroke="oklch(82% 0.16 175)" stroke-width="1.25" fill="none"></path>
-<path d="M252 141 C 285 141, 285 198, 318 198" stroke="oklch(82% 0.16 175)" stroke-width="1.25" fill="none"></path>
+    <rect x="318" y="182" width="120" height="32" rx="6" fill="oklch(82% 0.16 175)" opacity="0.14"/>
+    <rect x="318" y="182" width="120" height="32" rx="6" fill="none" stroke="oklch(82% 0.16 175)" stroke-width="1"/>
+    <text x="378" y="202" text-anchor="middle" class="lnk-addr-text">0xa1…f7</text>
+  </g>
+
+  <g>
+    <rect x="318" y="240" width="120" height="32" rx="6" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.12)" stroke-width="1" stroke-dasharray="3 3"/>
+    <text x="378" y="260" text-anchor="middle" class="lnk-addr-text lnk-addr-text--dim">0x4b…91</text>
+    <text x="378" y="283" text-anchor="middle" class="lnk-cap lnk-cap--dim">NOT SIGILIZED · PRIVATE</text>
+  </g>
+
+  <path d="M98 141 L148 141" stroke="oklch(82% 0.16 175)" stroke-width="1.25" class="lnk-flow lnk-fade-2"/>
+  <path d="M252 141 C 285 141, 285 84, 318 84" stroke="oklch(82% 0.16 175)" stroke-width="1.25" fill="none" class="lnk-flow lnk-fade-3"/>
+  <path d="M252 141 L 318 141" stroke="oklch(82% 0.16 175)" stroke-width="1.25" fill="none" class="lnk-flow lnk-fade-3"/>
+  <path d="M252 141 C 285 141, 285 198, 318 198" stroke="oklch(82% 0.16 175)" stroke-width="1.25" fill="none" class="lnk-flow lnk-fade-3"/>
 </svg>

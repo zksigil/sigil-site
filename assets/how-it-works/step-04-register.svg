@@ -1,13 +1,29 @@
-<?xml version="1.0"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 130" width="180" height="130">
-<rect x="10" y="50" width="32" height="32" rx="3" fill="rgba(255,255,255,0.08)"></rect>
-<rect x="48" y="50" width="32" height="32" rx="3" fill="rgba(255,255,255,0.08)"></rect>
-<rect x="86" y="42" width="48" height="48" rx="4" fill="oklch(82% 0.16 175)"></rect>
-<rect x="142" y="50" width="32" height="32" rx="3" fill="rgba(255,255,255,0.08)" opacity="0.5"></rect>
-<rect x="42" y="64" width="6" height="4" fill="rgba(255,255,255,0.2)"></rect>
-<rect x="80" y="64" width="6" height="4" fill="oklch(82% 0.16 175)"></rect>
-<rect x="134" y="64" width="8" height="4" fill="rgba(255,255,255,0.2)"></rect>
-<text x="110" y="74" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-weight="700" font-size="22" fill="#0A0A0A">S</text>
-<line x1="110" y1="28" x2="110" y2="42" stroke="oklch(82% 0.16 175)" stroke-width="1.5" stroke-dasharray="2 3"></line>
-<circle cx="110" cy="22" r="5" fill="oklch(82% 0.16 175)"></circle>
+  <style>
+    @keyframes register-stream {
+      from { stroke-dashoffset: 0; }
+      to   { stroke-dashoffset: -10; }
+    }
+    .register-line { animation: register-stream 1.2s linear infinite; }
+    @keyframes register-source-pulse {
+      0%, 100% { opacity: 1; }
+      50%      { opacity: 0.45; }
+    }
+    .register-source { animation: register-source-pulse 1.8s ease-in-out infinite; }
+    @media (prefers-reduced-motion: reduce) {
+      .register-line, .register-source { animation: none; }
+    }
+  </style>
+  <g transform="translate(0, 12)">
+    <rect x="10" y="50" width="32" height="32" rx="3" fill="rgba(255,255,255,0.08)"/>
+    <rect x="48" y="50" width="32" height="32" rx="3" fill="rgba(255,255,255,0.08)"/>
+    <rect x="86" y="42" width="48" height="48" rx="4" fill="oklch(82% 0.16 175)"/>
+    <rect x="142" y="50" width="32" height="32" rx="3" fill="rgba(255,255,255,0.08)" opacity="0.5"/>
+    <rect x="42" y="64" width="6" height="4" fill="rgba(255,255,255,0.2)"/>
+    <rect x="80" y="64" width="6" height="4" fill="oklch(82% 0.16 175)"/>
+    <rect x="134" y="64" width="8" height="4" fill="rgba(255,255,255,0.2)"/>
+    <text x="110" y="74" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-weight="700" font-size="22" fill="#0A0A0A">S</text>
+    <line class="register-line" x1="110" y1="28" x2="110" y2="42" stroke="oklch(82% 0.16 175)" stroke-width="1.5" stroke-dasharray="2 3"/>
+    <circle class="register-source" cx="110" cy="22" r="5" fill="oklch(82% 0.16 175)"/>
+  </g>
 </svg>

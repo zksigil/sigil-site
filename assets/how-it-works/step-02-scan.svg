@@ -1,12 +1,28 @@
-<?xml version="1.0"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 130" width="180" height="130">
-<rect x="30" y="14" width="70" height="100" rx="6" fill="rgba(255,255,255,0.08)"></rect>
-<rect x="30" y="14" width="70" height="100" rx="6" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1"></rect>
-<circle cx="65" cy="48" r="10" fill="oklch(82% 0.16 175)"></circle>
-<rect x="42" y="74" width="46" height="4" fill="oklch(82% 0.16 175)" opacity="0.55"></rect>
-<rect x="42" y="84" width="46" height="4" fill="oklch(82% 0.16 175)" opacity="0.35"></rect>
-<rect x="42" y="94" width="46" height="4" fill="oklch(82% 0.16 175)" opacity="0.2"></rect>
-<path d="M130 50 A 14 14 0 0 1 130 78" stroke="oklch(82% 0.16 175)" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.9"></path>
-<path d="M130 40 A 24 24 0 0 1 130 88" stroke="oklch(82% 0.16 175)" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.5"></path>
-<path d="M130 30 A 34 34 0 0 1 130 98" stroke="oklch(82% 0.16 175)" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.22"></path>
+  <style>
+    @keyframes nfc-pulse {
+      0%   { opacity: 0;   transform: scale(0.85); }
+      20%  { opacity: 0.9; }
+      100% { opacity: 0;   transform: scale(1.25); }
+    }
+    .nfc-arc {
+      transform-origin: 130px 64px;
+      transform-box: view-box;
+      animation: nfc-pulse 2.4s ease-out infinite;
+    }
+    .nfc-arc:nth-of-type(2) { animation-delay: 0.8s; }
+    .nfc-arc:nth-of-type(3) { animation-delay: 1.6s; }
+    @media (prefers-reduced-motion: reduce) {
+      .nfc-arc { animation: none; }
+    }
+  </style>
+  <rect x="30" y="14" width="70" height="100" rx="6" fill="rgba(255,255,255,0.08)"/>
+  <rect x="30" y="14" width="70" height="100" rx="6" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <circle cx="65" cy="48" r="10" fill="oklch(82% 0.16 175)"/>
+  <rect x="42" y="74" width="46" height="4" fill="oklch(82% 0.16 175)" opacity="0.55"/>
+  <rect x="42" y="84" width="46" height="4" fill="oklch(82% 0.16 175)" opacity="0.35"/>
+  <rect x="42" y="94" width="46" height="4" fill="oklch(82% 0.16 175)" opacity="0.2"/>
+  <path class="nfc-arc" d="M130 50 A 14 14 0 0 1 130 78" stroke="oklch(82% 0.16 175)" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <path class="nfc-arc" d="M130 40 A 24 24 0 0 1 130 88" stroke="oklch(82% 0.16 175)" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <path class="nfc-arc" d="M130 30 A 34 34 0 0 1 130 98" stroke="oklch(82% 0.16 175)" stroke-width="3" stroke-linecap="round" fill="none"/>
 </svg>

@@ -1,8 +1,17 @@
-<?xml version="1.0"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120" width="160" height="120">
-<rect x="14" y="20" width="132" height="16" rx="2" fill="rgba(255,255,255,0.08)"></rect>
-<rect x="14" y="40" width="132" height="16" rx="2" fill="oklch(82% 0.16 175)"></rect>
-<rect x="14" y="60" width="132" height="16" rx="2" fill="rgba(255,255,255,0.08)"></rect>
-<rect x="14" y="80" width="132" height="16" rx="2" fill="rgba(255,255,255,0.08)"></rect>
-<rect x="2" y="40" width="6" height="16" rx="1" fill="oklch(82% 0.16 175)"></rect>
+  <style>
+    @keyframes step-marker-blink {
+      0%, 100% { opacity: 1; }
+      50%      { opacity: 0.4; }
+    }
+    .address-marker { animation: step-marker-blink 1.6s ease-in-out infinite; }
+    @media (prefers-reduced-motion: reduce) {
+      .address-marker { animation: none; }
+    }
+  </style>
+  <rect x="14" y="20" width="132" height="16" rx="2" fill="rgba(255,255,255,0.08)"/>
+  <rect x="14" y="40" width="132" height="16" rx="2" fill="oklch(82% 0.16 175)"/>
+  <rect x="14" y="60" width="132" height="16" rx="2" fill="rgba(255,255,255,0.08)"/>
+  <rect x="14" y="80" width="132" height="16" rx="2" fill="rgba(255,255,255,0.08)"/>
+  <rect class="address-marker" x="2" y="40" width="6" height="16" rx="1" fill="oklch(82% 0.16 175)"/>
 </svg>

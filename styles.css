@@ -384,61 +384,6 @@ main {
   line-height: 1.55;
 }
 
-/* step visuals — motion */
-@keyframes step-marker-blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
-}
-.address-marker {
-  animation: step-marker-blink 1.6s ease-in-out infinite;
-}
-
-@keyframes nfc-pulse {
-  0%   { opacity: 0;   transform: scale(0.85); }
-  20%  { opacity: 0.9; }
-  100% { opacity: 0;   transform: scale(1.25); }
-}
-.nfc-arc {
-  transform-origin: 130px 64px;
-  transform-box: view-box;
-  animation: nfc-pulse 2.4s ease-out infinite;
-}
-.nfc-arc:nth-of-type(2) { animation-delay: 0.8s; }
-.nfc-arc:nth-of-type(3) { animation-delay: 1.6s; }
-
-@keyframes proof-rotate {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-.proof-shape {
-  transform-origin: 90px 67.5px;
-  transform-box: view-box;
-  animation: proof-rotate 10s linear infinite;
-}
-
-@keyframes register-stream {
-  from { stroke-dashoffset: 0; }
-  to   { stroke-dashoffset: -10; }
-}
-.register-line {
-  animation: register-stream 1.2s linear infinite;
-}
-@keyframes register-source-pulse {
-  0%, 100% { opacity: 1; }
-  50%      { opacity: 0.45; }
-}
-.register-source {
-  animation: register-source-pulse 1.8s ease-in-out infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .address-marker,
-  .nfc-arc,
-  .proof-shape,
-  .register-line,
-  .register-source { animation: none; }
-}
-
 /* ---- Privacy section -------------------------------------------------- */
 
 .section--privacy {
@@ -552,56 +497,6 @@ main {
 .lnk__copy p strong {
   color: var(--fg);
   font-weight: 500;
-}
-
-/* SVG-internal text classes */
-.lnk-addr-text {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  fill: var(--fg);
-}
-.lnk-addr-text--dim {
-  fill: var(--fg-dim);
-}
-.lnk-cap {
-  font-family: var(--font-mono);
-  font-size: 9px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-}
-.lnk-cap--dim {
-  fill: var(--fg-muted);
-}
-
-/* Animations */
-@keyframes lnk-flow {
-  to { stroke-dashoffset: -12; }
-}
-@keyframes lnk-glow {
-  0%, 100% { opacity: 0.85; }
-  50%      { opacity: 1; }
-}
-@keyframes lnk-fade-in {
-  0%   { opacity: 0; }
-  100% { opacity: 1; }
-}
-.lnk-flow {
-  stroke-dasharray: 3 4;
-  animation: lnk-flow 0.9s linear infinite;
-}
-.lnk-glow {
-  animation: lnk-glow 2.2s ease-in-out infinite;
-}
-.lnk-fade-1 { animation: lnk-fade-in 0.6s ease-out 0.2s both; }
-.lnk-fade-2 { animation: lnk-fade-in 0.6s ease-out 0.5s both; }
-.lnk-fade-3 { animation: lnk-fade-in 0.6s ease-out 0.8s both; }
-
-@media (prefers-reduced-motion: reduce) {
-  .lnk-flow,
-  .lnk-glow,
-  .lnk-fade-1,
-  .lnk-fade-2,
-  .lnk-fade-3 { animation: none; }
 }
 
 /* ---- Integration section --------------------------------------------- */
